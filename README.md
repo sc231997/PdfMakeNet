@@ -10,6 +10,12 @@
 
 c# wrapper for [PdfMake](http://pdfmake.org/#/).
 
+<b>Note: Before accesing the site please <i>disable add blocker</i> while on the site or whitelist it to PdfMakeNet work properly, you won't get any output with add blocker on.</b>
+
+### [Live Demo](https://sc231997.github.io/PdfMakeNet/)
+
+Demo live site credits to [sc231997](https://github.com/sc231997).
+
 ### Implemented and Pending Features
 
 * [x] line-wrapping
@@ -23,6 +29,8 @@ c# wrapper for [PdfMake](http://pdfmake.org/#/).
   *  [x] auto/fixed/star-sized widths
   *  [x] col-spans and row-spans
   *  [x] headers automatically repeated in case of a page-break
+  *  [ ] access to row number of table
+  *  [ ] access to layout functions
 * [x] images
 * [x] SVGs
 * [ ] vector graphics
@@ -101,42 +109,19 @@ Install-Package PdfMakeNet.Server.Extensions -Version 1.0.5
 ```
 using PdfMakeNet;
 
-//Outputs the documents definition in a http json response
-public ContentResult DocumentDefinitionInBrowser()
-{
-   var pdfmake = new PdfMake();
-   pdfmake.AddText(new PdfMakeText() 
-   { 
-      Alignment = Alingment.Center,
-      BackgroundColor = "red",
-      Bold = true,
-      Color = "white",
-      FontSize = 18,
-      Italics = true,
-      Text = "Hello World!"
-   });
-    return pdfmake.DocumentDefinitionInBrowser();
-}
-
-//Gets the document definition in a json string
-public string GetDocumentDefinition()
-{
-   var pdfmake = new PdfMake();
-   pdfmake.AddText(new PdfMakeText() 
-   { 
-      Alignment = Alingment.Center,
-      BackgroundColor = "red",
-      Bold = true,
-      Color = "white",
-      FontSize = 18,
-      Italics = true,
-      Text = "Hello World!"
-   });
-    return pdfmake.GetDocumentDefinition();
-}
+var pdfmake = new PdfMake();
+pdfmake.AddText(new PdfMakeText() 
+{ 
+  Alignment = Alingment.Center,
+  BackgroundColor = "red",
+  Bold = true,
+  Color = "white",
+  FontSize = 18,
+  Italics = true,
+  Text = "Hello World!"
+});
+Console.WriteLine(pdfmake.GetDocumentDefinition());
 ```
-
-## Fully PdfMakeNet Blazor Demo is on the way!!!
 
 ## Issues
 
@@ -148,3 +133,7 @@ Pull requests are welcome. Please submit a pull request letting me know if is a 
 
 ## License
 MIT
+
+## Contributors
+- [arivera](https://github.com/arivera12) (founder)
+- [sc231997](https://github.com/sc231997)
